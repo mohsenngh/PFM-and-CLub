@@ -1,0 +1,20 @@
+{
+  "short_name": "SEP PWA",
+  "name": "Saman Electronic Payment PWA",
+  "icons": [
+    {
+      "src": "/sep-logo-white.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/sep-logo-white.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#111827",
+  "background_color": "#111827"
+}

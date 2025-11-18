@@ -1,0 +1,8 @@
+{
+  "name": "724-PFM and Club",
+  "description": "A financial management and club application for 724.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
