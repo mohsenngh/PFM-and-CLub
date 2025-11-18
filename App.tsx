@@ -1,5 +1,4 @@
 
-
 import React, { useState, useEffect } from 'react';
 import { 
     QrCodeIcon, 
@@ -143,6 +142,39 @@ const allStores: Store[] = [
 
 
 // --- SCREENS ---
+
+const EntryScreen = ({ onEnter }: { onEnter: () => void }) => {
+    return (
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-b from-[#242831] to-[#1a1c23] text-white p-6">
+             <div className="flex-grow flex flex-col items-center justify-center space-y-8">
+                <div className="relative">
+                    <div className="absolute inset-0 bg-blue-500 rounded-full blur-xl opacity-20 animate-pulse"></div>
+                    <div className="w-36 h-36 bg-[#2c2c3a] rounded-3xl flex items-center justify-center shadow-2xl border border-gray-700 relative z-10">
+                         <h1 className="text-7xl font-black text-blue-500 font-nunito tracking-tighter">724</h1>
+                    </div>
+                </div>
+                
+                <div className="text-center space-y-2">
+                    <h2 className="text-2xl font-bold text-white">پرداخت الکترونیک سامان</h2>
+                    <p className="text-gray-400 max-w-xs">
+                        دنیایی از خدمات بانکی و پرداخت در دستان شما
+                    </p>
+                </div>
+             </div>
+             
+             <div className="w-full max-w-xs mb-12 space-y-4">
+                <button 
+                    onClick={onEnter}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-blue-900/30 transition-all active:scale-95 text-xl flex items-center justify-center gap-2"
+                >
+                    <span>ورود به اپلیکیشن</span>
+                    <ChevronLeftIcon className="w-5 h-5" />
+                </button>
+                <p className="text-center text-gray-600 text-xs font-nunito tracking-widest">VERSION 4.2.0</p>
+             </div>
+        </div>
+    );
+};
 
 const HomeScreen = ({ onServiceClick }: { onServiceClick: (serviceName: string) => void }) => {
     // --- SUB-COMPONENTS ---
@@ -962,6 +994,7 @@ const BamanClubContainer = ({ onBack, stores }: { onBack: () => void; stores: St
 
 
 const App = () => {
+    const [hasEntered, setHasEntered] = useState(false);
     const [activeScreen, setActiveScreen] = useState<Screen>('home');
     const [isSourPopupVisible, setIsSourPopupVisible] = useState(false);
     const [currentSubScreen, setCurrentSubScreen] = useState<string | null>(null);
@@ -1013,6 +1046,10 @@ const App = () => {
             default:
                 return <HomeScreen onServiceClick={handleServiceClick} />;
         }
+    }
+
+    if (!hasEntered) {
+        return <EntryScreen onEnter={() => setHasEntered(true)} />;
     }
 
     return (
