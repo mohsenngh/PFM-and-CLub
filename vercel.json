@@ -2,6 +2,12 @@
   "redirects": [
     {
       "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "pfm-and-c-lub.vercel.app"
+        }
+      ],
       "destination": "https://pfm-and-club.vercel.app/$1",
       "permanent": true
     }
